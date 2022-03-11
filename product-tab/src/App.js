@@ -1,6 +1,8 @@
 // import "./App.css";
 // import React from "react";
 import { ProductTable } from "./components/ProductTable";
+import { Toolbar } from "./components/Toolbar";
+import Gallery from "./components/Gallery";
 
 function App() {
   const productInventory = [
@@ -14,8 +16,16 @@ function App() {
 
   return (
     <>
-      {/* {" "} */}
-      <ProductTable products={productInventory} />{" "}
+      {/* {" Think In React, build component by component "} */}
+      <ProductTable products={productInventory} />
+
+      {/* Event Interaction  */}
+      <Toolbar
+        onPlayMovie={() => alert("Playing!")}
+        onUploadImage={() => alert("Uploading!")}
+      />
+
+      <Gallery />
     </>
   );
 }

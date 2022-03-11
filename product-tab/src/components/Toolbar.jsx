@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Toolbar = () => {
+export const Toolbar = ({ onPlayMovie, onUploadImage }) => {
   return (
     <div>
       <Button onClick={onPlayMovie}>Play Movie</Button>
