@@ -1,8 +1,10 @@
 // import "./App.css";
 // import React from "react";
-import { ProductTable } from "./components/ProductTable";
+import { useState } from "react";
+
 import { Toolbar } from "./components/Toolbar";
 import Gallery from "./components/Gallery";
+import { FilteredTable } from "./components/FilteredTable";
 
 function App() {
   const productInventory = [
@@ -17,7 +19,9 @@ function App() {
   return (
     <>
       {/* {" Think In React, build component by component "} */}
-      <ProductTable products={productInventory} />
+      {/* <ProductTable products={productInventory} /> */}
+
+      <FilteredTable products={productInventory} />
 
       {/* Event Interaction  */}
       <Toolbar

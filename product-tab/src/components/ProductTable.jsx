@@ -2,12 +2,16 @@ import React from "react";
 import { ProductCategoryRow } from "./ProductCategoryRow";
 import { ProductRow } from "./ProductRow";
 
-export const ProductTable = ({ products }) => {
+export const ProductTable = ({ products, filterText }) => {
   const rows = [];
-  let lastItem = null;
+  let lastCategory = null;
 
   products.forEach((product) => {
-    if (product.category !== lastItem) {
+    if (product.name.toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
+      return;
+    }
+
+    if (product.category !== lastCategory) {
       rows.push(
         <ProductCategoryRow
           category={product.category}
@@ -15,15 +19,15 @@ export const ProductTable = ({ products }) => {
         />
       );
     }
-    rows.push(<ProductRow product={product} />);
+    rows.push(<ProductRow product={product} key={product.name} />);
 
-    // Change lastItem category to current category, so when checked against a new product of different category,
+    // Change lastCategory category to current category, so when checked against a new product of different category,
     // it will go through if statement and create new category row
-    lastItem = product.category;
+    lastCategory = product.category;
   });
 
   return (
-    <table>
+    <table style={{ border: "2px solid green" }}>
       <thead>
         <tr>
           <th>Name</th>
